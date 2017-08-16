@@ -16,15 +16,18 @@ headers = {
     'cookie': 'cookie: _ym_uid=1484309026450282985; showNewFeatures=7; showNewFeaturesMainPage=4; left_filter_test=1;'
 
 }
-
 resp = requests.get(url=url_start, headers=headers)
 
 with open('tmp.html', 'w') as fname:
     fname.write(resp.text)
 
 soup = BeautifulSoup(resp.text, 'html.parser')
-ads = soup.find_all('span', {'class': 'blue bold'})
-print(len(ads))
+ads = soup.find_all('a', {'class': 'address'}, href=True)
+unique_urls = []
 for ad in ads:
-    print(ad)
+    if ad['href'] not in unique_urls:
+        unique_urls.append(ad['href'])
+print(len(unique_urls))
+for url in unique_urls:
+    print(url)
 

@@ -5,11 +5,13 @@ from bs4 import BeautifulSoup
 
 class QuotesSpider(scrapy.Spider):
     name = "auto_ria"
-    search_url = 'https://auto.ria.com/search/?marka_id[0]=62&model_id[0]=1560&s_yers[0]=0&po_yers[0]=0&marka_id[1]=62&model_id[1]=18484&s_yers[1]=0&po_yers[1]=0&price_do=7000&currency=1&abroad=2&custom=1&type[1]=2&fuelRatesType=city&engineVolumeFrom=&engineVolumeTo=&power_name=1&countpage=10'
+    search_url = 'https://auto.ria.com/search/?category_id=1&marka_id[0]=84&model_id[0]=31495&s_yers[0]=2003&po_yers[0]=2004&currency=1&abroad=2&custom=1&fuelRatesType=city&engineVolumeFrom=&engineVolumeTo=&power_name=1&countpage=10'
+#    search_url = 'https://auto.ria.com/search/?marka_id[0]=62&model_id[0]=1560&s_yers[0]=0&po_yers[0]=0&marka_id[1]=62&model_id[1]=18484&s_yers[1]=0&po_yers[1]=0&price_do=7000&currency=1&abroad=2&custom=1&type[1]=2&fuelRatesType=city&engineVolumeFrom=&engineVolumeTo=&power_name=1&countpage=10'
     start_urls = []
+    page_counter = 1
 
-    def start_requests(self):
-        """Use search url and get the list of ads urls."""
+    def find_urls(self, url):
+        """Find all ads urls inside url till the end."""
         headers = {
             'accept-encoding': 'gzip, deflate, br',
             'accept-language':
@@ -22,14 +24,24 @@ class QuotesSpider(scrapy.Spider):
             'cookie': 'cookie: _ym_uid=1484309026450282985; showNewFeatures=7; showNewFeaturesMainPage=4; left_filter_test=1;'
 
         }
-        resp = requests.get(url=self.search_url, headers=headers)
+        resp = requests.get(url=url, headers=headers)
         soup = BeautifulSoup(resp.text, 'html.parser')
         ads = soup.find_all('a', {'class': 'address'}, href=True)
         unique_urls = []
         for ad in ads:
             if ad['href'] not in unique_urls:
                 unique_urls.append(ad['href'])
-        for url in unique_urls:
+        if len(unique_urls) > 0:
+            self.start_urls.extend(unique_urls)
+            next_page_url = '{}&page={}'.format(self.search_url, self.page_counter) 
+            self.page_counter += 1
+            self.find_urls(next_page_url)
+        
+        
+    def start_requests(self):
+        """Use search url and get the list of ads urls."""
+        self.find_urls(self.search_url)
+        for url in self.start_urls:
             yield self.make_requests_from_url(url)
 
     def parse(self, response):

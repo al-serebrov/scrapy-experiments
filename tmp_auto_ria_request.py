@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 url_start = \
-'https://auto.ria.com/search/?marka_id[0]=62&model_id[0]=1560&s_yers[0]=0&po_yers[0]=0&marka_id[1]=62&model_id[1]=18484&s_yers[1]=0&po_yers[1]=0&price_do=7000&currency=1&abroad=2&custom=1&type[1]=2&fuelRatesType=city&engineVolumeFrom=&engineVolumeTo=&power_name=1&countpage=10'
+'https://auto.ria.com/search/?marka_id[0]=62&model_id[0]=1560&s_yers[0]=0&po_yers[0]=0&marka_id[1]=62&model_id[1]=18484&s_yers[1]=0&po_yers[1]=0&price_do=7000&currency=1&abroad=2&custom=1&type[1]=2&fuelRatesType=city&engineVolumeFrom=&engineVolumeTo=&power_name=1&countpage=10&page=52'
 
 headers = {
     'accept-encoding': 'gzip, deflate, br',
@@ -30,4 +30,8 @@ for ad in ads:
 print(len(unique_urls))
 for url in unique_urls:
     print(url)
-
+next_page = soup.find_all(
+                'a',
+                {'class': 'pager-item'},
+        )
+print(next_page)

@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 
 class RiaSpider(scrapy.Spider):
     name = "auto_ria"
-#    search_url = 'https://auto.ria.com/search/?category_id=1&marka_id[0]=84&model_id[0]=31495&s_yers[0]=2003&po_yers[0]=2004&currency=1&abroad=2&custom=1&fuelRatesType=city&engineVolumeFrom=&engineVolumeTo=&power_name=1&countpage=10'
     start_urls = []
     page_counter = 1
 

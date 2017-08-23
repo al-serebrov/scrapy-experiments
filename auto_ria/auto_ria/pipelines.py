@@ -8,7 +8,7 @@
 import csv
 
 
-class AutoRiaPipeline(object):
+class AutoRiaCsvPipeline(object):
     
     headers_check = None
 

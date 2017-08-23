@@ -9,31 +9,24 @@ import csv
 
 
 class AutoRiaPipeline(object):
+    
+    headers_check = None
+
     def open_spider(self, spider):
-        self.file = open('items.csv', 'w')
-        # fieldnames = ['brand', 'model', 'author_name', 'author_phone', 'price',
-        #        'city', 'mileage', 'year']
-        # fieldnames = {
-        #         'brand' : 'Brand',
-        #         'model': 'Model',
-        #         'author_name': 'Author Name',
-        #         'author_phone': 'Phone',
-        #         'price': 'Price',
-        #         'city': 'City',
-        #         'mileage': 'Mileage',
-        #         'year': 'Year'
-        # }
-        # fieldnames = item.fields.keys()
-        # self.writer = csv.DictWriter(self.file, delimiter=',', fieldnames=fieldnames)
-        # self.writer.writeheader()
+        self.filename = 'items.csv'
+        self.file = open(self.filename, 'w')
 
     def close_spider(self, spider):
         self.file.close()
 
     def process_item(self, item, spider):
-        fieldnames = item.keys()
-        self.writer = csv.DictWriter(self.file, delimiter=',',
-                fieldnames=fieldnames)
-        self.writer.writeheader()
+        if self.headers_check is None:
+            with open(self.filename, 'r') as csvfile:
+                self.reader = csv.DictReader(csvfile, delimiter=',')
+                self.headers_check = self.reader.fieldnames
+                fieldnames = item.keys()
+                self.writer = csv.DictWriter(self.file, delimiter=',',
+                        fieldnames=fieldnames)
+                self.writer.writeheader()
         self.writer.writerow(item)
         return item

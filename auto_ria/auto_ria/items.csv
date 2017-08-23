@@ -1,17 +1,32 @@
-brand,model,author_name,author_phone,price,city,mileage,year
-Volkswagen,T4 (Transporter) груз,Андрей,(063) 142-09-80,5 500 $,Киев,300 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,Misha,(067) 705-49-56,5 000 $,Ровно,280 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,Борис,(050) 514-14-29,6 500 $,Стрый,390 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,,(097) 557-63-11,8 000 $,Львов,330 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,Иван,(097) 315-71-70,6 600 $,Мангуш,179 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,Виталий,(073) 118-25-75,8 000 $,Полтава,197 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,,(098) 841-69-55,8 000 $,Черновцы,465 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,Евгений,(097) 843-78-16,6 900 $,Сарата,247 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,Имя Не Указано,(093) 499-04-00,5 650 $,Киев,280 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,Віктор,(067) 309-19-73,6 800 $,Хмельницкий,422 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,Виталий,(098) 158-44-12,6 800 $,Киев,330 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,,(066) 519-91-00,5 000 $,Кропивницкий (Кировоград),500 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,Максим,(097) 293-65-26,8 000 $,Черкассы,246 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,Юрий,(097) 245-90-94,6 000 $,Острог,280 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,,(067) 270-23-10,6 200 $,Винница,250 тыс. км,2003
-Volkswagen,T4 (Transporter) груз,Radik,(097) 175-27-00,8 500 $,Каменец-Подольский,307 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_20204756.html,Volkswagen,T4 (Transporter) груз,Misha,(067) 705-49-56,5 000 $,Ровно,280 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_20303127.html,Volkswagen,T4 (Transporter) груз,,(098) 841-69-55,8 000 $,Черновцы,465 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_20301814.html,Volkswagen,T4 (Transporter) груз,Андрей,(063) 142-09-80,5 500 $,Киев,300 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_20026706.html,Volkswagen,T4 (Transporter) груз,Евгений,(097) 843-78-16,6 900 $,Сарата,247 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_20300194.html,Volkswagen,T4 (Transporter) груз,Борис,(050) 514-14-29,6 500 $,Стрый,390 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_19269587.html,Volkswagen,T4 (Transporter) груз,Иван,(097) 315-71-70,6 600 $,Мангуш,179 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_20320913.html,Volkswagen,T4 (Transporter) груз,Имя Не Указано,(093) 499-04-00,5 650 $,Киев,280 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_19933368.html,Volkswagen,T4 (Transporter) груз,Виталий,(073) 118-25-75,8 000 $,Полтава,197 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_20238073.html,Volkswagen,T4 (Transporter) груз,,(097) 557-63-11,8 000 $,Львов,330 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_20208707.html,Volkswagen,T4 (Transporter) груз,Виталий,(098) 158-44-12,6 800 $,Киев,330 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_20172438.html,Volkswagen,T4 (Transporter) груз,,(066) 519-91-00,5 000 $,Кропивницкий (Кировоград),500 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_19596428.html,Volkswagen,T4 (Transporter) груз,Юрий,(097) 245-90-94,6 000 $,Острог,280 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_18706182.html,Volkswagen,T4 (Transporter) груз,Максим,(097) 293-65-26,8 000 $,Черкассы,246 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_20233534.html,Volkswagen,T4 (Transporter) груз,Віктор,(067) 309-19-73,6 800 $,Хмельницкий,422 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_19484994.html,Volkswagen,T4 (Transporter) груз,Radik,(097) 175-27-00,8 500 $,Каменец-Подольский,307 тыс. км,2003
+Link,Brand,Model,Name,Phone,Price,City,Mileage,Year
+https://auto.ria.com/auto_volkswagen_t4_transporter_gruz_19944290.html,Volkswagen,T4 (Transporter) груз,,(067) 270-23-10,6 200 $,Винница,250 тыс. км,2003

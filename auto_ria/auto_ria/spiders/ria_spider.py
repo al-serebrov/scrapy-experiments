@@ -9,7 +9,6 @@ class QuotesSpider(scrapy.Spider):
     start_urls = []
     page_counter = 1
 
-
     def find_urls(self, url):
         """Find all ads urls inside url till the end."""
         headers = {
@@ -58,4 +57,4 @@ class QuotesSpider(scrapy.Spider):
             'mileage': response.css('div.run strong::text').extract_first(),
             'year': response.css('span.year::text').extract_first()
         }
-        yield OrderedDict(params)
+        yield params

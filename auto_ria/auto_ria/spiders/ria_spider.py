@@ -1,14 +1,37 @@
 import scrapy
 import requests
+import re
 from collections import OrderedDict
 from bs4 import BeautifulSoup
 
-class QuotesSpider(scrapy.Spider):
+class RiaSpider(scrapy.Spider):
     name = "auto_ria"
-    search_url = 'https://auto.ria.com/search/?category_id=1&marka_id[0]=84&model_id[0]=31495&s_yers[0]=2003&po_yers[0]=2004&currency=1&abroad=2&custom=1&fuelRatesType=city&engineVolumeFrom=&engineVolumeTo=&power_name=1&countpage=10'
+#    search_url = 'https://auto.ria.com/search/?category_id=1&marka_id[0]=84&model_id[0]=31495&s_yers[0]=2003&po_yers[0]=2004&currency=1&abroad=2&custom=1&fuelRatesType=city&engineVolumeFrom=&engineVolumeTo=&power_name=1&countpage=10'
     start_urls = []
     page_counter = 1
 
+    def __init__(self, url=None, *args, **kwargs):
+        super(RiaSpider, self).__init__(*args, **kwargs)
+        self.search_url = url
+
+    def analyse_url(self, url):
+        if url is not None:
+            self.logger.info('url is not none')
+            search_regex = re.compile(r'https://auto.ria.com/search.*')
+            single_regex = re.compile(r'https://auto.ria.com/auto.*')
+            if re.search(search_regex, url) is not None:
+                # means that we have an url to the search
+                self.logger.info('search url match')
+                self.find_urls(url)
+            elif re.search(single_regex, url) is not None:
+                # url to a single item
+                self.logger.info('single url match')
+                self.append_url(url)
+        else:
+            self.logger.critical("Url is not specified")
+
+    def append_url(self, url):
+        self.start_urls.append(url)
 
     def find_urls(self, url):
         """Find all ads urls inside url till the end."""
@@ -40,7 +63,7 @@ class QuotesSpider(scrapy.Spider):
 
     def start_requests(self):
         """Use search url and get the list of ads urls."""
-        self.find_urls(self.search_url)
+        self.analyse_url(self.search_url)
         for url in self.start_urls:
             yield self.make_requests_from_url(url)
 

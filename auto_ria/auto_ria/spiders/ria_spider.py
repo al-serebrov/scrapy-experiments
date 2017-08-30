@@ -9,7 +9,6 @@ class QuotesSpider(scrapy.Spider):
     start_urls = []
     page_counter = 1
 
-
     def find_urls(self, url):
         """Find all ads urls inside url till the end."""
         headers = {
@@ -45,17 +44,20 @@ class QuotesSpider(scrapy.Spider):
             yield self.make_requests_from_url(url)
 
     def parse(self, response):
-        params = {
-            'brand': response.css('span[itemprop="brand"]::text').extract_first(),
-            'model': response.css('span[itemprop="name"]::text').extract_first(),
-            'author_name':
-                response.css('dt.user-name strong::text').extract_first(),
-            'author_phone':
-                response.css('span.mhide::attr(data-phone-number)').extract_first(),
-            'price': response.css('span.price::text').extract_first(),
-            'city':
-                response.css('span[title="Город продавца"]::text').extract_first(),
-            'mileage': response.css('div.run strong::text').extract_first(),
-            'year': response.css('span.year::text').extract_first()
-        }
+        params = [
+            ('Link', response.url),
+            ('Brand',
+                response.css('span[itemprop="brand"]::text').extract_first()),
+            ('Model',
+                response.css('span[itemprop="name"]::text').extract_first()),
+            ('Name',
+                response.css('dt.user-name strong::text').extract_first()),
+            ('Phone',
+                response.css('span.mhide::attr(data-phone-number)').extract_first()),
+            ('Price', response.css('span.price::text').extract_first()),
+            ('City',
+                response.css('span[title="Город продавца"]::text').extract_first()),
+            ('Mileage', response.css('div.run strong::text').extract_first()),
+            ('Year', response.css('span.year::text').extract_first())
+        ]
         yield OrderedDict(params)

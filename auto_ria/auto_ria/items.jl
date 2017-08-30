@@ -1,1 +1,0 @@
-{"author_name": "Radik", "model": "T4 (Transporter) груз", "city": "Каменец-Подольский", "mileage": "307 тыс. км", "brand": "Volkswagen", "author_phone": "(097) 175-27-00", "price": "8 500 $", "year": "2003"}

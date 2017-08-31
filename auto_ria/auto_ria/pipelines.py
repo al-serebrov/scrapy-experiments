@@ -10,7 +10,7 @@ from scrapy.exporters import CsvItemExporter
 
 
 class AutoRiaCsvPipeline(object):
-    
+
     headers_check = None
 
     def open_spider(self, spider):

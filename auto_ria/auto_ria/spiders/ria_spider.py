@@ -1,6 +1,7 @@
 import scrapy
 import requests
 import re
+import csv
 from collections import OrderedDict
 from bs4 import BeautifulSoup
 
@@ -9,25 +10,41 @@ class RiaSpider(scrapy.Spider):
     start_urls = []
     page_counter = 1
 
-    def __init__(self, url=None, *args, **kwargs):
+    def __init__(self, url=None, f=None, *args, **kwargs):
         super(RiaSpider, self).__init__(*args, **kwargs)
         self.search_url = url
+        self.input_file = f
+
+    def handle_params(self, url, filename):
+        if filename is not None:
+            self.logger.info('Parsing csv file')
+            self.parse_csv(filename)
+        elif url is not None:
+            self.analyse_url(url)
+        else:
+            self.logger.critical('''You need to provide either url or csv file with urls(s)''')
+
+    def parse_csv(self, filename):
+        with open(filename, 'r') as csvfile:
+            reader = csv.reader(csvfile)
+            for row in reader:
+                self.analyse_url(row[0])
 
     def analyse_url(self, url):
+        self.logger.debug('Analysing url')
         if url is not None:
-            self.logger.info('url is not none')
             search_regex = re.compile(r'https://auto.ria.com/search.*')
             single_regex = re.compile(r'https://auto.ria.com/auto.*')
             if re.search(search_regex, url) is not None:
                 # means that we have an url to the search
-                self.logger.info('search url match')
+                self.logger.debug('search url match')
                 self.find_urls(url)
             elif re.search(single_regex, url) is not None:
                 # url to a single item
-                self.logger.info('single url match')
+                self.logger.debug('single url match')
                 self.append_url(url)
-        else:
-            self.logger.critical("Url is not specified")
+            else:
+                self.logger.debug('no url found')
 
     def append_url(self, url):
         self.start_urls.append(url)
@@ -62,7 +79,7 @@ class RiaSpider(scrapy.Spider):
 
     def start_requests(self):
         """Use search url and get the list of ads urls."""
-        self.analyse_url(self.search_url)
+        self.handle_params(self.search_url, self.input_file)
         for url in self.start_urls:
             yield self.make_requests_from_url(url)
 
